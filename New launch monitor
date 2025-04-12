@@ -1,1 +1,49 @@
-git clone https://github.com/your-username/repository-name.git
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golf Swing Tracker</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 500px;
+      margin: auto;
+      padding: 1rem;
+      text-align: center;
+      background: #f2f2f2;
+    }
+    select, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      font-size: 16px;
+    }
+    video {
+      width: 100%;
+      margin-top: 1rem;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Golf Swing Tracker</h1>
+  <p>This is a prototype using your iPhone camera. Swing speed, launch angle, and distance detection will be added in future versions.</p>
+  
+  <button onclick="startCamera()">Start Camera</button>
+  <video id="camera" autoplay playsinline></video>
+
+  <script>
+    async function startCamera() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.getElementById('camera');
+        video.srcObject = stream;
+      } catch (err) {
+        alert('Camera access denied or not supported.');
+      }
+    }
+  </script>
+</body>
+</html>
